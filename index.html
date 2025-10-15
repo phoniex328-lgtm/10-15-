@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>我的網站 - 橫幅 + Logo 範例</title>
+
+  <!-- 基本樣式 -->
+  <style>
+    :root{
+      --brand:#1e88e5;
+      --muted:#6b7280;
+      --maxw:1100px;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Noto Sans TC","Microsoft JhengHei",system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#111827;
+      background:#f7fafc;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* container */
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:24px;
+    }
+
+    /* header with logo */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:8px 0 20px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo {
+      width:56px;
+      height:56px;
+      display:inline-block;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--brand),#4fb3ff);
+      padding:8px;
+      box-shadow: 0 6px 18px rgba(30,136,229,0.18), inset 0 -2px 6px rgba(255,255,255,0.1);
+    }
+    .brand h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:0.2px;
+    }
+    .brand p{
+      margin:0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* hero / banner */
+    .hero{
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(16,24,40,0.06), rgba(255,255,255,0.02));
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      display:grid;
+      grid-template-columns: 1fr;
+    }
+
+    .hero-inner{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:18px;
+      padding:48px 28px;
+    }
+
+    .hero-title{
+      font-size:28px;
+      margin:0;
+      line-height:1.05;
+      color:#0f172a;
+    }
+    .hero-sub{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .hero-cta{
+      margin-top:8px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      text-decoration:none;
+      padding:10px 18px;
+      border-radius:10px;
+      font-weight:600;
+      display:inline-block;
+      box-shadow:0 6px 18px rgba(30,136,229,0.12);
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--brand),#3aa0ff);
+      color:white;
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--brand);
+      border:1px solid rgba(30,136,229,0.14);
+    }
+
+    /* hero image (右側大圖) */
+    .hero-visual{
+      display:block;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.08), transparent 10%),
+        linear-gradient(135deg,#5eead4 0%, #3b82f6 60%);
+      min-height:220px;
+    }
+
+    /* layout for wider screens */
+    @media (min-width:900px){
+      .hero{
+        grid-template-columns: 1fr 420px;
+        align-items:stretch;
+      }
+      .hero-inner{
+        padding:64px;
+      }
+      .hero-visual{
+        min-height:unset;
+      }
+    }
+
+    /* small helper section */
+    .features{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .card{
+      background:white;
+      padding:14px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(12,18,30,0.04);
+      min-width:160px;
+      flex:1;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      padding:26px 0 40px 0;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- header: logo + short slogan -->
+    <header>
+      <a class="brand" href="#">
+        <!-- Inline SVG Logo: 可直接修改 fill 或替換成 <img src="..."> -->
+        <span class="logo" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="網站 Logo">
+            <rect x="1" y="1" width="22" height="22" rx="5" fill="white" opacity="0.06"/>
+            <path d="M6 15c2-3 4-4 6-4s4 1 6 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="8.6" r="3.2" stroke="white" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <div>
+          <h1>你的品牌名稱</h1>
+          <p>一句短介紹 / 標語（例如：專注設計與創意）</p>
+        </div>
+      </a>
+
+      <!-- optional right top small action -->
+      <nav aria-label="site actions">
+        <a href="#contact" class="btn btn-ghost">聯絡我們</a>
+      </nav>
+    </header>
+
+    <!-- hero / banner -->
+    <section class="hero" role="region" aria-label="橫幅介紹">
+      <div class="hero-inner">
+        <h2 class="hero-title">讓訪客第一眼就記住你<br><span style="color:var(--brand)">漂亮的橫幅 + 清楚的介紹</span></h2>
+        <p class="hero-sub">這是範例網站的橫幅區塊。你可以把這裡當成首頁介紹、活動促案或作品主視覺。</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#learn">了解更多</a>
+          <a class="btn btn-ghost" href="#portfolio">作品集</a>
+        </div>
+
+        <div class="features" aria-hidden="true">
+          <div class="card">
+            <strong>簡潔設計</strong>
+            <div style="color:var(--muted); font-size:13px; margin-top:6px">清晰的排版與行動裝置優先。</div>
+          </div>
+          <div class="card">
+            <strong>快速上線</strong>
+            <div style="color:var(--muted); font-size:13px; margin-top:6px">單檔即可上傳至 GitHub Pages。</div>
+          </div>
+          <div class="card">
+            <strong>易於修改</strong>
+            <div style="color:var(--muted); font-size:13px; margin-top:6px">直接編輯文字、顏色與按鈕連結。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- hero visual (右側或下方) -->
+      <div class="hero-visual" aria-hidden="true">
+        <!-- 你可以把這裡換成 <img src="banner.jpg" alt=""> 放本地圖檔 -->
+      </div>
+    </section>
+
+    <!-- 內文示範 -->
+    <main style="margin-top:20px">
+      <section id="learn" style="background:white;padding:20px;border-radius:12px;box-shadow:0 6px 16px rgba(12,18,30,0.04)">
+        <h3 style="margin-top:0">如何使用這個範例</h3>
+        <ol style="color:var(--muted)">
+          <li>把整個檔案儲存為 <code>index.html</code></li>
+          <li>（可選）修改「你的品牌名稱」與標語文字，或改 SVG logo</li>
+          <li>上傳到 GitHub Repo 或其他靜態託管服務並發布（下方有步驟）</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> 你的品牌名稱 — 範例頁面 • 此範例為單檔 HTML（包含 logo 與橫幅）
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
